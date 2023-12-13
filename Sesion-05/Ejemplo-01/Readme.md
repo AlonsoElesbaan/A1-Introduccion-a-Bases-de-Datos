@@ -49,6 +49,13 @@
    ```
    
    Para mostrar la proyección, damos clic en el botón `FIND`.
+
+   Esto sería el equivalente a escribir en __SQL__
+   
+    ```sql
+   SELECT name, email
+   FROM users;
+   ```
    
    ![imagen](imagenes/s4e24.png)
 
