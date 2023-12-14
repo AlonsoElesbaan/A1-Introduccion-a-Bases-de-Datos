@@ -36,9 +36,9 @@ Todas las consultas que realices deberás mantenerlas dentro del MongoDB Compass
 
 9. Obtén las rutas con un número de paradas entre 1 y 5.
 
-10. Obtén la empresa con el menor número de empleados.
+10. Obtén la compañia con el menor número de empleados.
 
-11. Obtén la empresa con el mayor número de empleados.
+11. Obtén la compañia con el mayor número de empleados.
 
 12. Obtén el viaje con mayor duración.
 
@@ -51,106 +51,123 @@ Todas las consultas que realices deberás mantenerlas dentro del MongoDB Compass
 
 1. Obtén los datos de contacto de cada compañía.
 
-   ```json
-   /* Proyección. */
-   {email_address:1, phone_number:1}
-   ```
+	```json
+	/* Colección: companies */
+	/* Proyección. */
+	{email_address:1, phone_number:1}
+	```
 
-2. Obtén el identificador de la clase de cada calificación.
+2. Obtén el identificador de la clase de cada estudiante.
 
-   ```json
-   /* Proyección. */
-   {class_id: 1}
-   ```
+	```json
+	/* Colección: grades */
+	/* Proyección. */
+	{class_id: 1}
+	```
 
 3. Obtén el nombre de todas las compañias fundadas en octubre.
 
-   ```json
-   /* Filtro. */
-   {founded_month: 10}
-   ```
+	```json
+	/* Colección: companies */
+	/* Filtro. */
+	{founded_month: 10}
+	/* Proyección. */
+	{name:1}
+	```
 
 4. Obtén el nombre de todas las compañías fundadas en 2008.
 
-   ```json
-   /* Filtro. */
-   {founded_year: 2008}
-   /* Proyección. */
-   {name:1}
-   ``` 
+	```json
+	/* Colección: companies */
+	/* Filtro. */
+	{founded_year: 2008}
+	/* Proyección. */
+	{name:1}
+	``` 
 
 5. Obtén todos los *post* del autor `machine`.
 
-   ```json
-   /* Filtro. */
-   {author:"machine"}
-   ```
+	```json
+	/* Colección: posts */
+	/* Filtro. */
+	{author:"machine"}
+	```
 
 6. Obtén todas las calificaciones provenientes de los grupos `357`, `57` y `465`.
 
-   ```json
-   /* Filtro. */
-   {class_id: {$in: [350, 57, 465]}}
-   ```
+	```json
+	/* Colección: grades */
+	/* Filtro. */
+	{class_id: {$in: [350, 57, 465]}}
+	/* Proyección. */
+	{scores:1}
+	```
 
 7. Obtén todas las compañías fundadas en octubre del 2008.
 
-   ```json
-   /* Filtro. */
-   {founded_year: 2008, founded_month:10}
-   ```
+	```json
+	/* Colección: companies */
+	/* Filtro. */
+	{founded_year: 2008, founded_month:10}
+	```
 
 8. Obtén todas las compañias con más de 50 empleados. 
 
-   ```json
-   /* Filtro. */
-   {number_of_employees: {$gt: 50}}
-   ```
+	```json
+	/* Colección: companies */
+	/* Filtro. */
+	{number_of_employees: {$gt: 50}}
+	```
 
 9. Obtén las rutas con un número de paradas entre 1 y 5.
 
-   ```json
-   /* Filtro. */
-   {$and: [{stops: {$gte: 1}}, {stops: {$lte: 5}}]}
-   ```
+	```json
+	/* Colección: routes */
+	/* Filtro. */
+	{$and: [{stops: {$gte: 1}}, {stops: {$lte: 5}}]}
+	```
 
-10. Obtén la empresa con el menor número de empleados.
+10. Obtén la compañia con el menor número de empleados.
 
-   ```json
-   /* Filter. */
-   {number_of_employees: {$ne:null}}
-   /* Ordenamiento. */
-   {number_of_employees:1}
-   /* Limit. */
-   1
-   ```
+	```json
+	/* Colección: companies */
+	/* Filter. */
+	{number_of_employees: {$gt:0}}
+	/* Ordenamiento. */
+	{number_of_employees:1}
+	/* Limit. */
+	1
+	```
 
-11. Obtén la empresa con el mayor número de empleados.
+11. Obtén la compañia con el mayor número de empleados.
 
-   ```json
-   /* Ordenamiento. */
-   {number_of_employees:-1}
-   /* Limit. */
-   1
-   ```
+	```json
+	/* Colección: companies */
+	/* Ordenamiento. */
+	{number_of_employees:-1}
+	/* Limit. */
+	1
+	```
 
 12. Obtén el viaje con mayor duración.
 
-   ```json
-   /* Ordenamiento. */
-   {tripduration: -1}
-   /* Limit. */
-   1
-   ```
+	```json
+	/* Colección: trips */
+	/* Ordenamiento. */
+	{tripduration: -1}
+	/* Limit. */
+	1
+	```
 
-13. Obtén la historia menos comentada.
+13. Obtén el viaje con menor duración.
 
-   ```json
-   /* Ordenamiento. */
-   {tripduration: -1}
-   /* Limit. */
-   1
-   ```
+	```json
+	/* Colección: trips */
+	/* Ordenamiento. */
+	{tripduration: -1}
+	/* Limit. */
+	1
+	```
 
 <p>
 
